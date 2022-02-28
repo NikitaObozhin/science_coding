@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/user_profile/style.css' %}">
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block head %}{% endblock head %}
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="logo"><img src="{% static 'img/main_page/logo.png' %}" alt="logo"></a>
+        <nav class="header_menu">
+            <ul class="topmenu">
+                <li><a href="#">Курсы</a></li>
+                <li><a href="#">Форум</a></li>
+                <li><a href="#">Блог</a></li>
+                {% if request.user.is_authenticated %}
+                    <li class="drop_menu_triger">
+                        {% if user.last_name != '' and user.first_name != '' %}
+                            <button onclick="myFunction()" class="dropbtn">{{ user.first_name }} {{ user.last_name }}</button>
+                        {% else %}
+                            <button onclick="myFunction()" class="dropbtn">{{ user.username }}</button>
+                        {% endif %}
+                        <div id="myDropdown" class="dropdown-content">
+                            <div class="user_info">
+                                <div class="elipse">
+                                    {% if user.user_avatar %}
+                                        <img src="{{ user.user_avatar.url }}" alt="avatar">
+                                    {% else %}
+                                        <img src="{% static 'img/default_avatar.png' %}" alt="avatar">
+                                    {% endif %}
+                                </div>
+                                <div class="user_text_info">
+                                    {% if user.last_name != '' and user.first_name != '' %}
+                                        <a href="#">{{ user.last_name }} {{ user.first_name }}</a>
+                                    {% else %}
+                                        <a href="#">{{ user.username }}</a>
+                                    {% endif %}
+                                    <p style="margin-top: 3px;">Статуст подписки:  <span>Активна</span></p>
+                                    <p>Бонусных баллов:  <span>1230б.</span></p>
+                                    <p>Бонусных баллов:  <span>1230б.</span></p>
+                                </div>
+                            </div>
+                            <button class="fill_button_green_2">Продолжить курс</button>
+                            <button class="fill_button_green_2">Личный кабинет</button>
+                            <form method="post" action="{% url 'logout_user' %}">
+                                {% csrf_token  %}
+                                <input class="fill_button_red" type="submit" value="Выйти"></input>
+                            </form>
+                        </div>                                
+                    </li>                        
+                {% else %}
+                    <li><a href="login/">Личный кабинет</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    {% block content %}{% endblock content %}
+</body>
+</html>

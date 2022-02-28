@@ -1,0 +1,21 @@
+{% extends 'user_profile/template.html' %}
+{% load static %}
+
+{% block title %}
+    {% if user.first_name != '' and user.last_name != '' %}
+        Science Coding - {{ user.first_name }} {{ user.last_name }}
+    {% else %}
+        Science Coding - {{ user.username }} 
+    {% endif %}
+{% endblock title %}
+
+{% block head %}
+    
+{% endblock head %}
+
+
+{%  block content %}
+
+    {% include '_partials/footer.html' %}
+
+{% endblock content %}

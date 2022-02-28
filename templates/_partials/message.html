@@ -1,0 +1,13 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/_partials/style.css' %}">
+</head>
+
+{% for message in messages %}
+        <div class="messages">
+            <div class="error"></div>
+            <div class="message">
+                {{ message }}
+            </div>
+        </div>
+{% endfor %}

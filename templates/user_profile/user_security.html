@@ -1,0 +1,58 @@
+{% extends 'user_profile/template.html' %}
+{% load static %}
+
+{% block title %}
+    {% if user.first_name != '' and user.last_name != '' %}
+        Science Coding.Безопасность - {{ user.first_name }} {{ user.last_name }}
+    {% else %}
+        Science Coding.Безопасность - {{ user.username }} 
+    {% endif %}
+{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/user_profile/style_settings.css' %}">
+{% endblock head %}
+
+
+{%  block content %}
+<div class="main_section">
+    <div class="left_bar">
+        <h2>Личный кабинет</h2>
+        <ul>
+            <li><a href="{% url 'user_profile' username=request.user.username  %}">Личные данные</a></li>
+            <li><a href="{% url 'user_security' username=request.user.username  %}" style="color: #000000;">Настройки безопасности</a></li>
+            <li><a href="#">История покупок</a></li>
+            <li><a href="#">Партнерский кабинет</a></li>
+        </ul>
+    </div>
+    <div class="rignt_bar">
+        <form method="post" action="{% url 'user_security' username=request.user.username  %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h3>Настройки безопасности</h3>
+            <h4>Почта</h4>
+            <div class="flex_div">
+                <input type="text" name="email" placeholder="E-mail адрес" value="{{ user.email }}">
+                <button name="_save_email">Изменить</button>
+            </div>
+            {% include '_partials/message_security.html' %}
+            <h4>Банковская карта</h4>
+            <div class="flex_div">
+                <input type="text" name="card" placeholder="Номер карты" value="">
+                <button name="_save_card">Добавить карту</button>
+            </div>
+            <h4>Платежный аккаунт</h4>
+            <div class="flex_div">
+                <input type="text" name="payment" placeholder="Аккаунт Платежной системы" value="">
+                <button name="_save_payment">Привязать аккаунт</button>
+            </div>
+            <h4>Пароль</h4>
+            <div class="flex_div">
+                <input type="password" name="password" placeholder="*********" value="">
+                <button name="_save_password">Изменить</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    {% include '_partials/footer.html' %}
+
+{% endblock content %}

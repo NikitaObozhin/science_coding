@@ -1,0 +1,83 @@
+{% extends 'user_profile/template.html' %}
+{% load static %}
+
+{% block title %}
+    {% if user.first_name != '' and user.last_name != '' %}
+        Science Coding - {{ user.first_name }} {{ user.last_name }}
+    {% else %}
+        Science Coding - {{ user.username }} 
+    {% endif %}
+{% endblock title %}
+
+{% block head %}
+    
+{% endblock head %}
+
+
+{%  block content %}
+
+    <div class="main_section">
+        <div class="left_bar">
+            <h2>Личный кабинет</h2>
+            <ul>
+                <li><a href="{% url 'user_profile' username=request.user.username  %}" style="color: #000000;">Личные данные</a></li>
+                <li><a href="{% url 'user_security' username=request.user.username  %}">Настройки безопасности</a></li>
+                <li><a href="#">История покупок</a></li>
+                <li><a href="#">Партнерский кабинет</a></li>
+            </ul>
+        </div>
+        <div class="rignt_bar">
+            <form method="post" action="{% url 'user_profile' username=request.user.username  %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3>Личные данные</h3>
+                <h4>Фотография</h4>
+                <div class="foto">
+                    {% if user.user_avatar %}
+                        <img src="{{ user.user_avatar.url }}" id="output" alt="avatar">
+                    {% else %}
+                        <img src="{% static 'img/default_avatar.png' %}" id="output" alt="avatar">
+                    {% endif %}
+
+                        <input name="avatar" id="avatar_down" type="file" class="dropzone" multiple onchange="loadFile(event)" />
+                        <label for="avatar_down" class="drop_zone_lb">
+                            <p>Для загрузки фотографии, <br>
+                                нажмите на поле для изображения</p>
+                        </label>
+                </div>
+                <button class="button_red" name="_delete"><img class="img_button" src="{% static 'img/user_profile/trash.png' %}" alt="trash"> Удалить фото</button>
+                <h4>Подписка</h4>
+                <img src="{% static 'img/user_profile/bg_subscribe.png' %}" 
+                style="width: 860px; height: 208px; margin: 0; margin-bottom: 30px;"
+                alt="subscribe">
+                <h4>Никнейм</h4>
+                <input type="text" name="username" placeholder="Никнейм" value="{{ user.username }}">
+                <h4>Имя</h4>
+                <input type="text" name="first_name" placeholder="Имя" value="{{ user.first_name }}">
+                <h4>Фамилия</h4>
+                <input type="text" name="last_name" placeholder="Фамилия" value="{{ user.last_name }}">
+                <h4>Пол</h4>
+                <select name="sex">
+                    {% if user.sex == 3 %}
+                        <option value="1">Не указан</option>
+                        <option value="2">Женский</option>
+                        <option selected value="{{ user.sex }}">{{ user.get_sex_display }}</option>
+                    {% elif user.sex == 2 %}
+                        <option value="1">Не указан</option>
+                        <option selected value="{{ user.sex }}">{{ user.get_sex_display }}</option>
+                        <option value="3">Мужской</option>
+                    {% elif user.sex == 1 %}
+                        <option selected value="{{ user.sex }}">{{ user.get_sex_display }}</option>
+                        <option value="2">Женский</option>
+                        <option value="3">Мужской</option>
+                    {% endif %}
+                </select>
+                <h4>Биография</h4>
+                <textarea name="bio" cols="30" rows="4" placeholder="Введите сообщение">{{ user.bio  }}</textarea> 
+                <button class="fill_button_green" name="_save">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    {% include '_partials/footer.html' %}
+
+{% endblock content %}

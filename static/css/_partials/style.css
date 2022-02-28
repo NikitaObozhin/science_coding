@@ -1,0 +1,121 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,500,600,800);
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+.messages_security {
+    background-color: #FFFFFF;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 15px;
+    margin-top: -15px;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+}
+.messages {
+    width: 500px;
+    background-color: #FFFFFF;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 15px;
+    margin-top: 15px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+.message {
+    max-width: 440px;
+    padding: 15px 15px 15px 15px;
+    box-sizing: border-box;
+    font-style: normal;
+    font-weight: 600;
+    color: #444444;
+    letter-spacing: 0.045em;
+    font-size: 15px;
+}
+.error {
+    background-image: url(../../img/authentication/warning.png);
+    width: 32px;
+    height: 32px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.045em;
+    font-size: 16px;
+}
+h5 {
+    color: #ffffff;
+    margin: 10px 0 20px 0;
+    text-align: center;
+    font-size: 16px;
+}
+.unfill_button_white {
+    width: 170px;
+    height: 40px;
+    border-radius: 15px;
+    border: 2px solid #FFFFFF;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    margin: 15px 0 5px 0;
+    font-weight: 600;
+}
+.footer {
+    background: url(../../img/main_page/footer_bg.png) no-repeat;
+    background-size: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    padding: 30px 19% 20px 19%;
+    margin-top: 60px;
+} 
+.urls {
+    margin-left: 20%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10%;
+}
+.urls_all {
+    grid-column: 2;
+}
+.urls_course {
+    grid-column: 1;
+}
+.urls_social {
+    grid-column: 3;
+}
+.footer a {
+    font-weight: 400;
+    font-size: 14px;
+}
+.footer ul {
+    padding: 0;
+}
+.footer li {
+    margin-bottom: 15px;
+}
+.social {
+    display: flex;
+    align-items: center;
+    align-content: center; 
+    justify-content: center; 
+    overflow: auto;  
+}
+.social img {
+    height: 25px;
+    margin-right: 18px;
+}
+

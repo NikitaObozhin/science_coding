@@ -1,0 +1,45 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/_partials/style.css' %}">
+</head>
+
+<div class="footer">
+    <a href="#" class="logo"><img src="{% static 'img/main_page/logo.png' %}" alt="logo"></a>
+    <div class="urls">
+        
+        <div class="urls_course">
+            <h5>НАШИ КУРСЫ</h5>
+            <ul>
+                <li><a href="#">Python Start</a></li>
+                <li><a href="#">Python Advanced</a></li>
+                <li><a href="#">Python Pro</a></li>
+                <li><a href="#">Python Django/Flask</a></li>
+                <li><a href="#">Посмотреть все курсы</a></li>
+            </ul>
+        </div>
+        <div class="urls_all">
+            <h5>ОБЩИЕ ССЫЛКИ</h5>
+            <ul>
+                <li><a href="#">Политика конфидециальности</a></li>
+                <li><a href="#">Условия использования</a></li>
+                <li><a href="#">Партнерская программа</a></li>
+                <li><a href="#">Цены и оплата</a></li>
+            </ul>
+        </div>
+        <div class="urls_social">
+            <h5>ОБРАТНАЯ СВЯЗЬ</h5>
+            <a href="#">Есть вопросы? Задайте их нам!</a>
+            <div class="social"> 
+                <a href="#" class="unfill_button_white" style="text-align: center;">Задать вопрос</a>
+            </div> 
+            <h5>НАШИ СОЦСЕТИ</h5>
+            <div class="social">
+                <a href="#"><img src="{% static 'img/main_page/iconFB.svg' %}" alt="fb"></a>
+                <a href="#"></a><img src="{% static 'img/main_page/iconTwitter.svg' %}" alt="tw"></a>
+                <a href="#"></a><img src="{% static 'img/main_page/iconVK.svg' %}" alt="vk"></a>
+                <a href="#"><img src="{% static 'img/main_page/iconYouTube.svg' %}" alt="yt" style="margin-right: 0;"></a>
+            </div>
+        </div>
+    </div>
+</div>

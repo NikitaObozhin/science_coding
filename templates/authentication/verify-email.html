@@ -1,0 +1,41 @@
+{% extends 'authentication/template.html' %}
+{% load static %}
+
+{% block title %}
+    Science Coding - Вход
+{% endblock title %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/authentication/style-verify.css' %}">
+{% endblock header %}
+
+{%  block content %}
+
+    <div class="backplace_register">
+
+        <h2>Пожалуйста, подтвердите ваш E-Mail</h2>
+
+        <p>Через несколько минут на вашу почту <span>{{ email }}</span> <br>
+            придет письмо с ссылкой на активацию аккаунта Science Coding. <br>
+            После подтверждения email ваш аккаунт будет активирован.</p>
+        
+        <p>Если вы не получили письмо со ссылкой подтверждения, тогда:</p>
+
+        <p>1. Проверьте папку СПАМ - возможно письмо попало туда. <br>
+            2. Проверьте правильно ли вы указали email - <span>{{ email }}</span>.</p>
+
+        <p>В случае, если вы допустили ошибку - пройдите регистрацию <br>
+            повторно. </p>
+
+        
+
+        <div class="buttons">
+            <a href="https://{{ email_servise }}" class="fill_button_green">Перейти в почту</a>
+            <a href="/register/" class="unfill_button_green">Регистрация</a>
+        </div>
+
+    </div>
+
+    {% include '_partials/message.html' %}
+
+{% endblock content %}

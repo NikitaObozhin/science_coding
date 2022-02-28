@@ -1,0 +1,35 @@
+{% extends 'authentication/template.html' %}
+
+{% block title %}
+    Science Coding - Регистрация
+{% endblock title %}
+
+{%  block content %}
+
+    <div class="backplace_register">
+
+        <h3 style="margin-bottom: 20px;"><a href="/login/">Вход</a>&nbsp;/&nbsp;Регистрация</a></h3> 
+
+        <p style="margin-bottom: 30px; text-align: center;">Уже есть аккаунт Science Coding? <a href="/login/" style="color: #444444;" >Войти</a></p>
+
+        <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+            
+            <input type="text" name="email" placeholder="Электронная почта" value="{{ data.email }}">
+            <input type="password" name="password" placeholder="Пароль">
+            <input type="password" name="password2" placeholder="Повторите пароль">
+
+            <div style="display: flex; margin-top: 50px; margin-bottom: 50px;">
+                <input type="checkbox" name="checked" id="checked" class="custom_checkbox">
+                <label for="checked">Я соглашаюсь с Правилами сайта и <br>
+                    Политикой конфиденциальности</label>
+            </div>
+            
+            <button class="fill_button_green">Зарегистрироваться</button>
+
+        </form>
+    </div>
+    
+    {% include '_partials/message.html' %}
+
+{% endblock content %}
